@@ -7,12 +7,18 @@ module.exports = {
   },
 
   async create(req, res) {
-    const { title, author } = req.body;
+    const { title, author, isFree, price } = req.body;
     const book = new Book({
       title,
       author,
+      isFree,
+      price,
     });
-    const result = await book.save();
-    return res.json(result);
+    try {
+      const result = await book.save();
+      return res.json(result);
+    } catch (err) {
+      return res.json(err.message);
+    }
   },
 };
