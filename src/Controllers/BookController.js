@@ -2,7 +2,7 @@ const Book = require("../database/schemas/bookSchema");
 
 module.exports = {
   async list(req, res) {
-    const data = await Book.find();
+    const data = await Book.find(req.query);
     return res.json(data);
   },
 

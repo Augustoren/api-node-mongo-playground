@@ -13,7 +13,7 @@ module.exports = {
   },
 
   async list(req, res) {
-    const data = await User.find();
+    const data = await User.find(req.query);
     res.json(data);
   },
 };
